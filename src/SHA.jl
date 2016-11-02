@@ -55,4 +55,12 @@ for (f, ctx) in [(:sha1, :SHA1_CTX),
     end
 end
 
+#todo: support more resets
+function reset!(s::SHA2_256_CTX)
+  s.bytecount=0
+  fill!(s.buffer,0)
+  copy!(s.state,SHA2_256_initial_hash_value)
+  s
+end
+
 end #module SHA
